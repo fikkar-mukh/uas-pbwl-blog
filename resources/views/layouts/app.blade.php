@@ -56,7 +56,6 @@
                             @endif
                         @else
                         
-
                             <li>
                                 <a class="nav-link" href="{{ url('/category') }}">Kategori</a>
                             </li>
@@ -73,8 +72,6 @@
                                 <a class="nav-link" href="{{ url('/album') }}">Album</a>
                             </li>
                     </div>
-
-
                         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                             <ul class="nav navbar-nav ml-auto">
                              <li class="nav-item active">
@@ -92,8 +89,7 @@
                             </li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
-                                    </form>
-                            
+                                    </form>                        
                             </ul>
                         @endguest
                    </div>

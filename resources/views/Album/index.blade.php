@@ -1,36 +1,17 @@
 @extends('layouts.app')
 @section('content')
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<style type="text/css">
-		h2	{
-			margin-bottom: 30px;
-		}
-
-		table {
-			background-color: #FFFFE0;
-		}
-
-	</style>
-</head>
-<body>
-
-</body>
-</html>
 <div class="container">
-	<h2>Data Album <a href="{{ url('album/create') }}" class="btn btn-info">Add</a></h2>
+	<h2>Data Album <a href="{{ url('album/create') }}" >Add</a></h2>
 
-	<table class="table">
-		<thead class="bg-light">
-		<tr class="bg-info">
-			<th scope="col">ID</th>
-			<th scope="col">PHOTO ID</th>
-			<th scope="col">NAMA</th>
-			<th scope="col">KETERANGAN</th>
-			<th scope="col">ACTION</th>
+	<table>
+		
+		<tr>
+			<th>ID</th>
+			<th>PHOTO ID</th>
+			<th>NAMA</th>
+			<th>KETERANGAN</th>
+			<th>ACTION</th>
 		</tr>
 
 		@foreach($rows as $row)
@@ -40,12 +21,12 @@
 			<td>{{ $row->album_name }}</td>
 			<td>{{ $row->album_text }}</td>
 			<td>
-				<a href="{{ url('album/' . $row->id . '/edit')}}" class="badge badge-success">EDIT</a>
+			<a href="{{ url('photo/' . $row->id . '/edit')}}">EDIT</a>
 				
-				<form action="{{ url('album/' . $row->id)}}" method="post" class="d-inline">
+				<form action="{{ url('photo/' . $row->id)}}" method="post">
 					<input name="_method" type="hidden" value="delete">
 					@csrf
-					<button class="badge badge-danger">DELETE</button>
+					<button id="badge badge-danger">DELETE</button>
 				</form>
 			</td>
 		</tr>

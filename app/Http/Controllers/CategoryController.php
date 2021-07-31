@@ -1,14 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Category;
 
-
 class CategoryController extends Controller
 {
-   
     public function index()
      {
         $rows = Category::All();
@@ -19,7 +15,6 @@ class CategoryController extends Controller
     {
         return view('category.add');
     }
-
    
     public function store(Request $request)
      {
@@ -48,7 +43,6 @@ class CategoryController extends Controller
           $row = Category::findOrFail($id);
         return view('category.edit', compact('row'));
     }
-
    
     public function update(Request $request, $id)
     {
@@ -67,7 +61,6 @@ class CategoryController extends Controller
 
         return redirect('category');
     }
-
    
     public function destroy($id)
   {

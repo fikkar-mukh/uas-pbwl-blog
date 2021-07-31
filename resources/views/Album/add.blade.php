@@ -1,60 +1,32 @@
 @extends('layouts.app')
 @section('content')
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<style type="text/css">
-
-		h2	{
-			margin-bottom: 30px;
-		}
-
-	</style>
-</head>
-<body>
 	<div class="container">
-	<div class="col-md-10">
-
 	<h2>Input Data Album</h2>
 	<form method="post" action="{{url('/album')}}">
 	@csrf
 		<table>
-			
-			<div class="form-group row">			
-				<label for="inputEmail3" class="col-sm-2 col-form-label">Photo</label>
-			<div class="col-sm-5">	
-				<select name="album_pho_id" class="form-control bg-info">
-					@foreach($pho as $row)
-					<option value="{{$row->id}}">{{$row->pho_tittle}}</option>
-					@endforeach
-				</select>
-			</div>
-			</div>
-
-			<div class="form-group row">			
-				<label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
-			<div class="col-sm-5">	
-				<input type="text" name="album_name" class="form-control bg-light" id="inputEmail3">
-			</div>
-			</div>
-
-			<div class="form-group row">			
-				<label for="inputEmail3" class="col-sm-2 col-form-label">Keterangan</label>
-			<div class="col-sm-5">		
-				<input type="text" name="album_text" class="form-control bg-light" id="inputEmail3">
-			</div>
-			</div>
-		
+		<tr>
+				<th>PHOTO ID</th>
+				<td><select name="photo_post_id">
+					@foreach($post as $row)
+					<option value="{{$row->id}}">{{$row->photo_tittle}}</option>
+					@endforeach</select></td>
+			</tr>
+			<tr>
+						<th>NAMA</th>
+						<td><input type="text" name="album_name"></td>
+					</tr>
+					<tr>
+						<th>KETERANGAN</th>
+						<td><input type="text" name="pho_text"></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><input id="btn" type="submit" value="SIMPAN"></td>
+					</tr>
 		</table>
-		<div class="form-group row">
-			<div class="col-sm-10">
-				<button type="submit" class="btn btn-info">SAVE</button>
-			</div>
-		</div>
+		
 	</form>
 </div>
-</body>
-</html>
 @endsection

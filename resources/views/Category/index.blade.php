@@ -1,28 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<style type="text/css">
-		h2	{
-			margin-bottom: 30px;
-		}
-
-	</style>
-</head>
-<body>
 	<div class="container">
 	<h2>Data Kategori <a href="{{ url('category/create') }}" class="btn btn-info">Add</a></h2>
-
-	<table class="table">
-		<thead class="bg-light">
-		<tr class="bg-info">
-			<th scope="col">ID</th>
-			<th scope="col">NAMA</th>
-			<th scope="col">KETERANGAN</th>
-			<th scope="col">ACTION</th>
+@csrf
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NAMA</th>
+			<th>KETERANGAN</th>
+			<th>EDIT</th>
 		</tr>
 
 		@foreach($rows as $row)
@@ -43,6 +30,5 @@
 		@endforeach
 	</table>
 </div>
-</body>
-</html>
+
 @endsection

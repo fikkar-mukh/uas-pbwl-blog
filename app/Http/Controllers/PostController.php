@@ -1,30 +1,21 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Post; 
 use App\Category; 
 
-
 class PostController extends Controller
-{
-    
+{  
     public function index()
     {
         $rows = Post::paginate(10);
         return view('post.index', compact('rows'));
-    
-    }
-
-    
+    }    
     public function create()
     {
         $cat = category::All();
         return view('post.add', compact('cat'));
-    }
-
-    
+    }   
     public function store(Request $request)
     {
        $this->validate($request, [
@@ -34,7 +25,6 @@ class PostController extends Controller
             'post_text'     => 'required',
             'post_cat_id'   => 'required'
          ]);
-
         $rows=Post::create([
             'post_date'     => $request->post_date,
             'post_slug'     => $request->post_slug,
@@ -42,7 +32,6 @@ class PostController extends Controller
             'post_text'     => $request->post_text,
             'post_cat_id'   => $request->post_cat_id
         ]);
-
        return redirect('post'); 
     }
 
@@ -60,7 +49,6 @@ class PostController extends Controller
         return view('post.edit', compact('rows','cat'));
     }
 
-    
     public function update(Request $request, $id)
     {
          $rows = Post::find($id);
@@ -74,7 +62,6 @@ class PostController extends Controller
 
         return redirect('post');
     }
-
     
     public function destroy($id)
     {

@@ -1,31 +1,22 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Photo;
 use App\Post; 
-
-
 class PhotoController extends Controller
 {
-   
     public function index()
     {
         $rows = Photo::Paginate(10);
         return view('photo.index', compact('rows'));
     }
-
     public function create()
     {
         $post = Post::ALl();
         return view('photo.add' , compact('post'));
     }
-
-
     public function store(Request $request)
      {
-
         $rows = new Photo();
         $rows->pho_date = $request->input('pho_date');
         $rows->pho_tittle = $request->input('pho_tittle');
@@ -39,7 +30,6 @@ class PhotoController extends Controller
             $gambar->move('public/uploads/images/', $filename);
             $rows->gambar = $filename;
         }
-
             $rows->save();
             return redirect('photo');
     }
@@ -56,11 +46,9 @@ class PhotoController extends Controller
          $rows = Photo::findOrFail($id);
         return view('photo.edit', compact('rows','post'));
     }
-
-    
+  
     public function update(Request $request, $id)
-    {
-        
+    {      
         $rows = Photo::find($id);
         $rows->pho_date = $request->input('pho_date');
         $rows->pho_tittle = $request->input('pho_tittle');
@@ -75,12 +63,10 @@ class PhotoController extends Controller
             $rows->gambar = $filename;
         }
         
-
         $rows->save();      
         return redirect('photo'); 
     }
 
-    
     public function destroy($id)
     {
         $row = Photo::findOrFail($id);
